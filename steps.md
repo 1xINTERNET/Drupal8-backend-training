@@ -1,4 +1,4 @@
-### 7 Creating a movie service
+### 7.1 Creating a movie service
 
 ![](step-7.1.png)
 
