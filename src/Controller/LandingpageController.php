@@ -51,7 +51,10 @@ class LandingpageController extends ControllerBase {
       '#markup' => $this->t('Hi <b>@username</b> these are some popular star wars movies you might be interested in.', ['@username' => $username])
     ];
     // Retrieve some Star Wars movies through the SWAPI API.
-    $build['#movies'] = $this->movieService->getMoviesByName('star wars');
+    $build['#movie_list'] = [
+      '#theme' => 'movie_list',
+      '#movies' => $this->movieService->getMoviesByName('star wars')
+    ];
 
     return $build;
   }

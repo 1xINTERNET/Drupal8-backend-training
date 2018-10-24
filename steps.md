@@ -1,13 +1,17 @@
-### 7 Creating a movie service
+### 9 Creating a block
 
-![](step-7.1.png)
+`drupal generate:plugin:block`
+
+![](step-8.1.png)
+![](step-8.2.png)
 
 Observations:
- - Services are frequently used objects and managed by the services container.
- - A new service file src/MovieService.php
- - A new landingpage.services.yml file
- 
- 
-We now abstract everything from the controller to our service.
+ - A new block plugin file under Plugin/Block/MovieListBlock.php
+ - You can create an instance in the block layout and choose a movie name
 
-We adapted the landingpage controller to use the service instead with dependency injection as well.
+As final points we:
+ - Abstract the templates a create a movie-list.html.twig and theme hook implementation
+ - Inject the movie service in to the newly created block
+ - Adjust the LandingpageController to use the correct theme implementation
+
+![](step-9.1.png)

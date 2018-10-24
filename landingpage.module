@@ -14,8 +14,13 @@ function landingpage_theme() {
   return [
     'landingpage' => [
       'variables' => [
-        'movies' => [],
+        'movie_list' => [],
         'greeting' => NULL
+      ]
+    ],
+    'movie_list' => [
+      'variables' => [
+        'movies' => []
       ]
     ]
   ];
