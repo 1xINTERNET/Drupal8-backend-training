@@ -1,0 +1,7 @@
+landingpage.landing_page_settings_form:
+  title: 'Landingpage'
+  route_name: landingpage.landing_page_settings_form
+  description: 'Landingpage settings'
+  parent: system.admin_config_system
+  weight: 99
+

@@ -3,6 +3,8 @@
 namespace Drupal\landingpage\Controller;
 
 use Drupal\Component\Serialization\Json;
+use Drupal\Core\Config\ConfigFactory;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Logger\LoggerChannelFactory;
 use GuzzleHttp\Client;
@@ -28,13 +30,22 @@ class LandingpageController extends ControllerBase {
   protected $logger;
 
   /**
+   * Config factory service.
+   *
+   * @var ConfigFactoryInterface
+   */
+  protected $configFactory;
+
+  /**
    * Constructs a LandingpageController object
    * @param Client $httpClient
    * @param LoggerChannelFactory $logger
+   * @param ConfigFactoryInterface $configFactory
    */
-  public function __construct(Client $httpClient, LoggerChannelFactory $logger) {
+  public function __construct(Client $httpClient, LoggerChannelFactory $logger, ConfigFactoryInterface $configFactory) {
     $this->httpClient = $httpClient;
     $this->logger = $logger;
+    $this->configFactory = $configFactory;
   }
 
   /**
@@ -43,7 +54,8 @@ class LandingpageController extends ControllerBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('http_client'),
-      $container->get('logger.factory')
+      $container->get('logger.factory'),
+      $container->get('config.factory')
     );
   }
 
@@ -64,7 +76,8 @@ class LandingpageController extends ControllerBase {
     // Retrieve some Star Wars movies through the SWAPI API.
     try {
       $client = $this->httpClient;
-      $request = $client->request('GET', 'http://www.omdbapi.com/?s=star-wars&type=movie&r=json&apikey=86e4b169');
+      $config = $this->config('landingpage.landingpagesettings');
+      $request = $client->request('GET', $config->get('api_url') . '?s=star-wars&type=movie&r=json&apikey=86e4b169');
       $response = $request->getBody();
       $response = Json::decode($response);
       // Loop over all movies.
