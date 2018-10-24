@@ -1,0 +1,12 @@
+<h3>{{ greeting }}</h3>
+<div class="movies">
+  {% if movies is not empty %}
+    {% for movie in movies %}
+      <div class="movie">
+        <b>{{ movie.Title }}</b>
+      </div>
+    {% endfor %}
+  {% else %}
+    {% trans %}No movies found!{% endtrans %}
+  {% endif %}
+</div>

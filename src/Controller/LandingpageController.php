@@ -55,8 +55,9 @@ class LandingpageController extends ControllerBase {
     if (!$this->currentUser()->isAnonymous()) {
       $username = $this->currentUser()->getDisplayName();
     }
+    $build['#theme'] = 'landingpage';
     // Greetings to our user.
-    $build = [
+    $build['#greeting'] = [
       '#type' => 'markup',
       '#markup' => $this->t('Hi <b>@username</b> these are some popular star wars movies you might be interested in.', ['@username' => $username])
     ];
@@ -68,9 +69,7 @@ class LandingpageController extends ControllerBase {
       $response = Json::decode($response);
       // Loop over all movies.
       if (!empty($response['Search'])) {
-        foreach ($response['Search'] as $movie) {
-          $build['#markup'] .= '</br><b>' . $movie['Title'] . '<b/>';
-        }
+        $build['#movies'] = $response['Search'];
       }
     } catch (\Exception $e) {
       $this->logger->get('landingpage')->error($e->getMessage());

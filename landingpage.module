@@ -8,6 +8,20 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
+ * Implements hook_theme().
+ */
+function landingpage_theme() {
+  return [
+    'landingpage' => [
+      'variables' => [
+        'movies' => [],
+        'greeting' => NULL
+      ]
+    ]
+  ];
+}
+
+/**
  * Implements hook_help().
  */
 function landingpage_help($route_name, RouteMatchInterface $route_match) {
