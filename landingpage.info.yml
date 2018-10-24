@@ -1,0 +1,5 @@
+name: 'Landingpage'
+type: module
+description: 'Landingpage module'
+core: 8.x
+package: '1xINTERNET'

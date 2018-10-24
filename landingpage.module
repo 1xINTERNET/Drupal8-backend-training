@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains landingpage.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function landingpage_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the landingpage module.
+    case 'help.page.landingpage':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Landingpage module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
