@@ -1,9 +1,9 @@
-### 3 Using Drupal services
+### 3.1 Using Drupal services
 
 We will use Movie API to show movies on our landingpage. 
 
 Observations:
- - The Drupal global service (dependen injection)
+ - The Drupal global service (dependency injection)
  - \Drupal::httpClient, \Drupal::logger
  - Usage of inline tags
  
