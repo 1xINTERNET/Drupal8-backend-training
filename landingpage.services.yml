@@ -1,0 +1,4 @@
+services:
+  landingpage.movie_service:
+    class: Drupal\landingpage\MovieService
+    arguments: ['@http_client', '@logger.factory', '@config.factory']

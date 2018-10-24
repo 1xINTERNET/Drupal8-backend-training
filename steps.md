@@ -1,12 +1,13 @@
-### 5 Using theme hook and templates
+### 7 Creating a movie service
 
-![](step-6.1.png)
-![](step-6.2.png)
+![](step-7.1.png)
 
 Observations:
- - A new landingpage.links.menu.yml file
- - A new folder and file under src/Form/LandingPageSettingsForm.php
- - A new entry in the routing yml file for the configuration form
- - Usage of the Form API
+ - Services are frequently used objects and managed by the services container.
+ - A new service file src/MovieService.php
+ - A new landingpage.services.yml file
+ 
+ 
+We now abstract everything from the controller to our service.
 
-We adapt the landingpage controller with an additional dependency injection for reading the configuration.
+We adapted the landingpage controller to use the service instead with dependency injection as well.
