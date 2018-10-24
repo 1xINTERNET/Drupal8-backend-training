@@ -1,0 +1,8 @@
+
+landingpage.landingpage_controller_content:
+  path: '/landingpage'
+  defaults:
+    _controller: '\Drupal\landingpage\Controller\LandingpageController::content'
+    _title: 'Welcome!'
+  requirements:
+    _permission: 'access content'
