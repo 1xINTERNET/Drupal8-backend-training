@@ -11,3 +11,4 @@ Observations:
  - PSR4 and namespacing
  - A new landingpage.routing.yml file
  - Route mapping of a route url to a controller
+ - Caching difference for authenticated/anonymous users

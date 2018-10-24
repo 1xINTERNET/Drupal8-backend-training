@@ -10,16 +10,22 @@ use Drupal\Core\Controller\ControllerBase;
 class LandingpageController extends ControllerBase {
 
   /**
-   * Content.
+   * Returns the landingpage.
    *
    * @return string
    *   Return Hello string.
    */
   public function content() {
-    return [
+    $username = '';
+    if (!$this->currentUser()->isAnonymous()) {
+      $username = $this->currentUser()->getDisplayName();
+    }
+    $build = [
       '#type' => 'markup',
-      '#markup' => $this->t('Implement method: content')
+      '#markup' => $this->t('Hi <b>@username</b> these are some popular star wars movies you might be interested in.', ['@username' => $username])
     ];
+
+    return $build;
   }
 
 }
