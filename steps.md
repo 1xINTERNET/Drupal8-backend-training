@@ -1,6 +1,6 @@
 ### 3 Using Drupal services
 
-We will use Star Wars API to show movies on our landingpage. 
+We will use Movie API to show movies on our landingpage. 
 
 Observations:
  - The Drupal global service (dependen injection)
