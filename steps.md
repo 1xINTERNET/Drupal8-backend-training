@@ -1,4 +1,4 @@
-### 5 Using theme hook and templates
+### 5.1 Using theme hook and templates
 
 Observations:
  - Implementation of hook_theme
