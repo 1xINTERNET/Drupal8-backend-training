@@ -4,11 +4,48 @@ namespace Drupal\landingpage\Controller;
 
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Logger\LoggerChannelFactory;
+use GuzzleHttp\Client;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class LandingpageController.
  */
 class LandingpageController extends ControllerBase {
+
+  /**
+   * Guzzle Http Client.
+   *
+   * @var GuzzleHttp\Client
+   */
+  protected $httpClient;
+
+  /**
+   * The logger service.
+   *
+   * @var LoggerChannelFactory
+   */
+  protected $logger;
+
+  /**
+   * Constructs a LandingpageController object
+   * @param Client $httpClient
+   * @param LoggerChannelFactory $logger
+   */
+  public function __construct(Client $httpClient, LoggerChannelFactory $logger) {
+    $this->httpClient = $httpClient;
+    $this->logger = $logger;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('http_client'),
+      $container->get('logger.factory')
+    );
+  }
 
   /**
    * Returns the landingpage with popular star wars movies.
@@ -25,7 +62,7 @@ class LandingpageController extends ControllerBase {
     ];
     // Retrieve some Star Wars movies through the SWAPI API.
     try {
-      $client = \Drupal::httpClient();
+      $client = $this->httpClient;
       $request = $client->request('GET', 'http://www.omdbapi.com/?s=star-wars&type=movie&r=json&apikey=86e4b169');
       $response = $request->getBody();
       $response = Json::decode($response);
@@ -36,7 +73,7 @@ class LandingpageController extends ControllerBase {
         }
       }
     } catch (\Exception $e) {
-      \Drupal::logger('landingpage')->error($e->getMessage());
+      $this->logger->get('landingpage')->error($e->getMessage());
     }
 
     return $build;
