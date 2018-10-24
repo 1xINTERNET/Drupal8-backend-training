@@ -1,4 +1,4 @@
-### 9 Creating a block
+### 8.1 Creating a block
 
 `drupal generate:plugin:block`
 
@@ -14,4 +14,4 @@ As final points we:
  - Inject the movie service in to the newly created block
  - Adjust the LandingpageController to use the correct theme implementation
 
-![](step-9.1.png)
+![](step-8.3.png)
