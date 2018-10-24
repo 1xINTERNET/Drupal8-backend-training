@@ -1,6 +1,4 @@
-### 4 Using dependency injection
-
-We will use Star Wars API to show movies on our landingpage. 
+### 4.1 Using dependency injection
 
 Observations:
  - \Drupal::httpClient, \Drupal::logger have been replaced
