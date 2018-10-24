@@ -3,7 +3,6 @@
 namespace Drupal\landingpage\Controller;
 
 use Drupal\Component\Serialization\Json;
-use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Logger\LoggerChannelFactory;
@@ -77,7 +76,7 @@ class LandingpageController extends ControllerBase {
     try {
       $client = $this->httpClient;
       $config = $this->config('landingpage.landingpagesettings');
-      $request = $client->request('GET', $config->get('api_url') . '?s=star-wars&type=movie&r=json&apikey=86e4b169');
+      $request = $client->request('GET', $config->get('api_url') . '?s=star-wars&type=movie&r=json&apikey=' . $config->get('api_key'));
       $response = $request->getBody();
       $response = Json::decode($response);
       // Loop over all movies.

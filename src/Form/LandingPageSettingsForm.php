@@ -38,6 +38,13 @@ class LandingPageSettingsForm extends ConfigFormBase {
       '#size' => 64,
       '#default_value' => $config->get('api_url'),
     ];
+    $form['api_key'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('API Key'),
+      '#maxlength' => 64,
+      '#size' => 64,
+      '#default_value' => $config->get('api_key'),
+    ];
     return parent::buildForm($form, $form_state);
   }
 
@@ -56,6 +63,7 @@ class LandingPageSettingsForm extends ConfigFormBase {
 
     $this->config('landingpage.landingpagesettings')
       ->set('api_url', $form_state->getValue('api_url'))
+      ->set('api_key', $form_state->getValue('api_key'))
       ->save();
   }
 
