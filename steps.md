@@ -1,16 +1,7 @@
-### 3 Using Drupal services
+### 4 Using dependency injection
 
 We will use Star Wars API to show movies on our landingpage. 
 
 Observations:
- - The Drupal global service (dependen injection)
- - \Drupal::httpClient, \Drupal::logger
- - Usage of inline tags
- 
-The following implementations works. It is however not aligned with clean coding.
-
-Improvements needed are:
- - Using dependency injection over the global Drupal wherever possible
- - Having a module as dynamic as possible. E.g. we could use a form to set the URL.
- - We need to make sure developers/themers can always override our output.
- - Remove usage of html in code.
+ - \Drupal::httpClient, \Drupal::logger have been replaced
+ - Usage of dependency injection through controllerbase
