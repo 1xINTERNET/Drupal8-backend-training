@@ -1,4 +1,4 @@
-### 5 Using theme hook and templates
+### 6.1 Using theme hook and templates
 
 ![](step-6.1.png)
 ![](step-6.2.png)
